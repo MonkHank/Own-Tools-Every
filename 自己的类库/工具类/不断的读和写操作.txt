@@ -1,0 +1,41 @@
+/**
+ 复制操作
+*/
+private static void copy(File from,File to) throws Exception {
+		
+		FileInputStream in = new FileInputStream(from);
+		FileOutputStream out = new FileOutputStream(to);
+		
+		byte[] buff = new byte[8192];
+		int n;//每一批的数量
+		while((n = in.read(buff)) != -1) {
+			out.write(buff, 0, n);
+		}
+		in.close();
+		out.close();
+		
+	}
+public class Test2 {
+	public static void main(String[] args) throws Exception {
+		FileInputStream in;
+		
+		in = new FileInputStream("d:/abc/f3");
+		//单字节读取标准格式
+		int b;
+		while((b = in.read()) != -1) {
+			System.out.println(b);
+		}
+		in.close();
+		
+		System.out.println("===============================");
+		
+		in = new FileInputStream("d:/abc/f3");
+		//批量读取标准格式
+		byte[] buff = new byte[4];
+		int n;
+		while((n = in.read(buff)) != -1) {
+			System.out.println(n + " - "+Arrays.toString(buff));
+		}
+		in.close();
+	}
+}

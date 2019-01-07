@@ -1,0 +1,16 @@
+	/**
+	 * 播放声音前的准备
+	 */
+	private SoundPool mSoundPool;
+	private int soundID;
+	private void initplaySound() {
+		mSoundPool = new SoundPool(3, AudioManager.STREAM_MUSIC, 20);
+		soundID = mSoundPool.load(view.getContext(), R.raw.scan, 1);// "/system/media/audio/notifications/Antimony.ogg"
+	}
+	
+	/**
+	 * 播放声音
+	 */
+	private void playSound(){
+		mSoundPool.play(soundID, 1, 1, 0, 0, 1);
+	}
